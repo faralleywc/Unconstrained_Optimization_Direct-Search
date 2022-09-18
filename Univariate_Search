@@ -103,3 +103,16 @@ class univariate_search():
                     G1 = a + (1 - ratio) * (b - a)
 
         return best_step
+        
+if __name__ == "__main__":
+    # 给定原始条件
+    function = 'x1 ** 2 + x2 ** 2 - x1 * x2 - 10 * x1 - 4 * x2 + 60'
+    start_point = [0, 0]
+    threshold = 1e-1
+    times = 100
+    step_range = 1
+    gold_precision = 1e-5
+    # 得到结果
+    myalgorithm = univariate_search(function, start_point, threshold, times, step_range, gold_precision)
+    best_x = myalgorithm.algorithm_run()
+    best_y = myalgorithm.target_calulate()
