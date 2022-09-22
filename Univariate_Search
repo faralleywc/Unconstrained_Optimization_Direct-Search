@@ -67,12 +67,11 @@ class univariate_search():
         return x
 
     #  计算在最优坐标下的最优目标函数值
-    def target_calulate(self):
+    def target_calulate(self, x):
         X = self.symbol_variable()
-        best_x = self.algorithm_run()
-        best_y = self.function.evalf(subs = dict(zip(X, best_x)))
+        y = self.function.evalf(subs = dict(zip(X, x)))
 
-        return best_y
+        return y
 
     # 黄金分割法一维搜索
     def golden_ratio(self, target):
@@ -115,4 +114,4 @@ if __name__ == "__main__":
     # 得到结果
     myalgorithm = univariate_search(function, start_point, threshold, times, step_range, gold_precision)
     best_x = myalgorithm.algorithm_run()
-    best_y = myalgorithm.target_calulate()
+    best_y = myalgorithm.target_calulate(best_x)
